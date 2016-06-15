@@ -19,7 +19,7 @@ No claim is made that this program is free from errors and no liability will be 
 
 This program can be used to create disolcations pairs (Frank-Read dislocations) in molecular crystals as described in the paper:
 
-Structure and dynamics of screw dislocations in even n-alkane crystals"
+"Structure and dynamics of screw dislocations in even n-alkane crystals"
 
 Authored by:
 Isabel Olson,<sup>1</sup> Alexander G. Shtukenberg,<sup>1</sup> Gagik Hakobyan,<sup>1</sup> Andrew Rohl,<sup>2</sup> Paolo Raiteri,<sup>2</sup> Michael D. Ward,<sup>1</sup> Bart Kahr<sup>1,3</sup>
