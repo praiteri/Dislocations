@@ -62,6 +62,8 @@ An example of usage is provided in the `test` folder and it can run by typing
 
 * The code requires an input file for the commands and a coordinate file in PDB format, see `test/dislocation.inp`
 * The molecules are displaced along the burger vector using this function
+* 
 ![image](doc/eq1.png)
+
 where $\sigma$, $n$ and $m$ are input parameters and $x$ is the distance between the centre of the disclocation (specified in the input) and the centre of mass of the molecule. Positive and negative displacements are applied to molecules sitting above and below the dislocation line, respectively.
 * The handedness of the dislocation can be changed by inverting the direction of the dislocation line
