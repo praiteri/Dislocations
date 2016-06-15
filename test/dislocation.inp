@@ -1,0 +1,8 @@
+radial
+  0.   0.   1.   # Burger's vector
+190. 150.   0.   # Centre of the 2 dislocations
+  1.   0.   0.   # Dislocation line direction
+ 60.  10   20    # Tapering function parameters (sigma, n, m)
+octane.pdb       # Input coordinates filename
+26               # Number of atoms in the molecule
+test.pdb         # Output coordinates filename
