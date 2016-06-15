@@ -39,18 +39,21 @@ Typical compilation options for *gfortran* and *ifort* have been provided, but y
 If you have the *gfortran* compiler installed you can move into the `src` directory and simply type
 ```bash
 make gf
-```bash
+```
+
 to compile the code.
 There is also a *debug* option that may help you trace back any issues with the code:
 ```bash
 make gf-dbg
-```bash
+```
+
 The executable `disloc.x` will be placed in the `bin` folder and after a succesful compilation all the object files will be moved to the `obj` folder, both located at the same level as `src`
 
 An example of usage is provided in the `test` folder and it can run by typing
 ```bash
 ../bin/disloc.x dislocation.inp
-```bash
+```
+
 
 ----------------------------------------------------------------------
 
@@ -59,6 +62,6 @@ An example of usage is provided in the `test` folder and it can run by typing
 
 * The code requires an input file for the commands and a coordinate file in PDB format, see `test/dislocation.inp`
 * The molecules are displaced along the burger vector using this function
-$d=\pm \frac{1-\bigg(\displaystyle\frac{x}{\sigma}\bigg)^n}{1-\bigg(\displaystyle\frac{x}{\sigma}\bigg)^m}$
+![image](doc/eq1.png)
 where $\sigma$, $n$ and $m$ are input parameters and $x$ is the distance between the centre of the disclocation (specified in the input) and the centre of mass of the molecule. Positive and negative displacements are applied to molecules sitting above and below the dislocation line, respectively.
 * The handedness of the dislocation can be changed by inverting the direction of the dislocation line
