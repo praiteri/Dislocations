@@ -39,18 +39,21 @@ Typical compilation options for *gfortran* and *ifort* have been provided, but y
 If you have the *gfortran* compiler installed you can move into the `src` directory and simply type
 ```bash
 make gf
-```bash
+```
+
 to compile the code.
 There is also a *debug* option that may help you trace back any issues with the code:
 ```bash
 make gf-dbg
-```bash
+```
+
 The executable `disloc.x` will be placed in the `bin` folder and after a succesful compilation all the object files will be moved to the `obj` folder, both located at the same level as `src`
 
 An example of usage is provided in the `test` folder and it can run by typing
 ```bash
 ../bin/disloc.x dislocation.inp
-```bash
+```
+
 
 ----------------------------------------------------------------------
 
