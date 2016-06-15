@@ -21,7 +21,8 @@ This program can be used to create disolcations pairs (Frank-Read dislocations) 
 
 "Structure and dynamics of screw dislocations in even n-alkane crystals"
 
-Authored by:
+authored by:
+
 Isabel Olson,<sup>1</sup> Alexander G. Shtukenberg,<sup>1</sup> Gagik Hakobyan,<sup>1</sup> Andrew Rohl,<sup>2</sup> Paolo Raiteri,<sup>2</sup> Michael D. Ward,<sup>1</sup> Bart Kahr<sup>1,3</sup>
 
 <sup>1</sup>Department of Chemistry and Molecular Design Institute, New York University, New York City, NY, 10003, USA.
@@ -60,10 +61,10 @@ An example of usage is provided in the `test` folder and it can run by typing
 # Features
 
 
-* The code requires an input file for the commands and a coordinate file in PDB format, see `test/dislocation.inp`
-* The molecules are displaced along the burger vector using this function
+* The code requires an input file for the commands and a coordinates file in PDB format, see `test/dislocation.inp`
+* The molecules are displaced along the Burger's vector using this function
  
 ![image](doc/eq1.png)
 
-where $\sigma$, $n$ and $m$ are input parameters and $x$ is the distance between the centre of the disclocation (specified in the input) and the centre of mass of the molecule. Positive and negative displacements are applied to molecules sitting above and below the dislocation line, respectively.
+where σ, *n* and *m* are input parameters and $x$ is the distance between the centre of the disclocation (specified in the input) and the centre of mass of the molecule. Positive and negative displacements are applied to molecules sitting above and below the dislocation line, respectively.
 * The handedness of the dislocation can be changed by inverting the direction of the dislocation line
