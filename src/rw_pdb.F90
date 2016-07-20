@@ -56,20 +56,20 @@ subroutine get_natom_pdb(uinp,natoms)
   return
 end subroutine get_natom_pdb
 
-subroutine read_pdb(uinp,natoms,pos,label,cell,go)
+subroutine read_pdb(uinp,natoms,pos,label,chg,cell,go)
   use variables, only : ip, dp, cp, pi
   implicit none
   integer(ip), intent(in) :: uinp
   integer(ip), intent(in) :: natoms
   real(dp), dimension(3,natoms), intent(out) :: pos
   character(cp), dimension(natoms), intent(out) :: label
+  real(dp), dimension(natoms), intent(out) :: chg
   real(dp), dimension(6), intent(out) :: cell
   logical, intent(out) :: go
 
   integer(ip) :: iatom
   real(dp) :: rtmp1, rtmp2
-  character(len=80)  :: pdb_line
-  character(len=100) :: line
+  character(len=100)  :: pdb_line
   character(len=10)  :: str
   logical, save :: first_time_in=.true.
   integer :: ios
@@ -82,15 +82,17 @@ subroutine read_pdb(uinp,natoms,pos,label,cell,go)
   go=.true.
   cell=0.0_dp
   do
-    read(uinp,'(a100)',end=222,err=222)line
-    if (len_trim(line)==0) goto 222
-    read(line,'(a80)')pdb_line
+    read(uinp,'(a100)',end=222,err=222)pdb_line
+    if (len_trim(pdb_line)==0) goto 222
     read(pdb_line,*)str
     if(str=="ATOM" .or. str=="HETATM")then
       iatom=iatom+1
 ! Positions & labels
       read(pdb_line(13:16),*)label(iatom) 
       read(pdb_line(31:54),'(3f8.3)')pos(:,iatom)
+      chg(iatom)=0.0d0
+      read(pdb_line(81:99),'(3f8.3)',end=100,err=100)chg(iatom)
+100   continue
 ! Cell
     elseif(str == "CRYST1") then
       read(pdb_line,*)str,cell
@@ -112,17 +114,18 @@ subroutine read_pdb(uinp,natoms,pos,label,cell,go)
   return
 end subroutine read_pdb
 
-subroutine write_pdb(uout,natoms,pos,label,hmat)
+subroutine write_pdb(uout,natoms,pos,label,chg,hmat)
   use variables, only : ip, dp, cp, pi
   implicit none
   integer(ip), intent(in) :: uout
   integer(ip), intent(in) :: natoms
-  real(dp), dimension(3,natoms), intent(in), target :: pos
+  real(dp), dimension(3,natoms), intent(in) :: pos
   character(cp), dimension(natoms), intent(in) :: label
+  real(dp), dimension(natoms), intent(in) :: chg
   real(dp), intent(in) :: hmat(3,3)
 
   integer(ip) :: i, j
-  character(len=80)  :: line
+  character(len=100)  :: line
   real(dp) :: cell(6)
   real(dp)  :: occ, beta, tmp
 
@@ -153,7 +156,8 @@ subroutine write_pdb(uout,natoms,pos,label,hmat)
     write(line(31:54),'(3f8.3)')pos(:,i)          ! atom coordinates (X, Y, Z)
     write(line(55:60),'(f6.2 )')occ               ! atom occupancy, usually "  1.00".
     write(line(61:66),'(f6.2 )')beta              ! B value or temperature factor.
-    write(uout,'(a80)')line
+    write(line(81:100),'(f12.8)')chg(i)
+    write(uout,'(a100)')line
   enddo
   write(uout,'("END")')
 

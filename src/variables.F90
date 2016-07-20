@@ -47,6 +47,7 @@ module variables
   integer(ip) :: natoms
   real(dp), allocatable, dimension(:,:) :: pos
   character(cp), allocatable, dimension(:) :: lab
+  real(dp), allocatable, dimension(:) :: chg
   real(dp), dimension(3,3) :: hmat, hinv
 !
 ! Neighbours' list

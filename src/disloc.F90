@@ -89,7 +89,8 @@ program dislocation
 
   allocate(pos(3,natoms))
   allocate(lab(natoms))
-  call read_pdb(cunit,natoms,pos,lab,cell,go)
+  allocate(chg(natoms))
+  call read_pdb(cunit,natoms,pos,lab,chg,cell,go)
   call get_hmat(cell,hmat)
   call get_3x3_inv(hmat,hinv,volume)
 
@@ -183,7 +184,7 @@ program dislocation
     pos(3,iatm) = hmat(3,1)*pfrac(1,iatm) + hmat(3,2)*pfrac(2,iatm) + hmat(3,3)*pfrac(3,iatm)
   enddo
 
-  call write_pdb(outfile,natoms,pos,lab,hmat)
+  call write_pdb(outfile,natoms,pos,lab,chg,hmat)
   deallocate(pfrac)
 
   stop
